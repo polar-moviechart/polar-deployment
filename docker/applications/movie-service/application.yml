@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: movie-service
+  datasource:
+    username: user
+    password: password
+    url: jdbc:mysql://polar-mysql:3306/polardb_movie
+  jpa:
+    defer-datasource-initialization: false # JPA의 EntityManagerFactory가 생성되기 전에 flyway 먼저 초기화
+    hibernate:
+      ddl-auto: none
+    show-sql: true  # SQL 쿼리 출력
+    properties:
+      hibernate:
+        format_sql: true  # SQL 쿼리 포맷팅
+  flyway:
+    enabled: true
+#    baseline-on-migrate: true
+
+springdoc:
+  package-to-scan: com.polar_moviechart.movieservice.domain.controller
+  default-consumes-media-type: application/json;charset-UTF-8
+  default-produces-media-type: application/json;charset-UTF-8
+  swagger-ui:
+    path: /swagger
+    disable-swagger-default-url: true
+    display-request-duration: true
+    operations-sorter: alpha
+
+user-service:
+  url: http://user-service:8082/internal/api/v1/users/
+
+server:
+  port: 8081

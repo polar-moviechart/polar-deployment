@@ -1,0 +1,107 @@
+version: '3.8'
+
+services:
+  edge-service:
+    build:
+      context: ../../edge-service
+    container_name: edge-service  # 컨테이너 이름
+    image: edge-service:latest   # 이미지 이름
+    ports:
+      - "8080:8080"
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: 127.0.0.1:24224
+    volumes:
+      - ./applications/edge-service/application.yml:/workspace/application.yml  # 로컬의 application.yml을 컨테이너에 마운트
+    environment:
+        - SPRING_CONFIG_LOCATION=/workspace/application.yml
+
+  user-service:
+    build:
+      context: ../../user-service
+    container_name: user-service  # 컨테이너 이름
+    image: user-service:latest   # 이미지 이름
+    depends_on:
+      - polar-mysql
+    ports:
+      - "8082:8082"
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: 127.0.0.1:24224
+    volumes:
+      - ./applications/user-service/application.yml:/workspace/application.yml  # 로컬의 application.yml을 컨테이너에 마운트
+    environment:
+      - SPRING_CONFIG_LOCATION=/workspace/application.yml
+#    entrypoint: ["sh", "-c", "sleep 6000"] # 디버깅을 위해 컨테이너 시작 후 일정 시간 슬립
+
+  movie-service:
+    build:
+      context: ../../movie-service
+    container_name: movie-service  # 컨테이너 이름
+    image: movie-service:latest   # 이미지 이름
+    depends_on:
+      - polar-mysql
+    ports:
+      - "8081:8081"
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: 127.0.0.1:24224
+    volumes:
+      - ./applications/movie-service/application.yml:/workspace/application.yml  # 로컬의 application.yml을 컨테이너에 마운트
+    environment:
+      - SPRING_CONFIG_LOCATION=/workspace/application.yml
+#    entrypoint: ["sh", "-c", "sleep 6000"] # 디버깅을 위해 컨테이너 시작 후 일정 시간 슬립
+
+  polar-mysql:
+    image: mysql:8.0
+    container_name: "polar-mysql"
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    volumes:
+      - polar-data:/var/lib/mysql
+
+# Observability #
+  grafana:
+    image: grafana/grafana:9.1.2
+    container_name: grafana
+    depends_on:
+      - loki
+      - prometheus
+      - tempo
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=user
+      - GF_SECURITY_ADMIN_PASSWORD=password
+    volumes:
+      - ./observability/grafana/datasources:/etc/grafana/provisioning/datasources
+      - ./observability/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./observability/grafana/grafana.ini:/etc/grafana/grafana.ini
+
+  loki:
+    image: grafana/loki:2.6.1
+    container_name: loki
+    depends_on:
+      - fluent-bit
+    ports:
+      - "3100:3100"
+
+  fluent-bit:
+    image: grafana/fluent-bit-plugin-loki:2.6.1-amd64
+    container_name: fluent-bit
+    ports:
+      - "24224:24224"
+    environment:
+      - LOKI_URL=http://loki:3100/loki/api/v1/push
+    volumes:
+      - ./observability/fluent-bit/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+
+volumes:
+  polar-data:
