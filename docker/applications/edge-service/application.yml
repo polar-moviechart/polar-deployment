@@ -61,3 +61,7 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}
+
+otel:
+  service:
+    name: ${spring.application.name}
