@@ -37,3 +37,13 @@ jwt:
   secetKey: polarMoviechartJwtSecretPolarMoviechartJwtSecret
   accessTokenValidityInMilliseconds: 3600000 # 1시간
   refreshTokenValidityInMilliseconds: 604800000 # 7일
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, prometheus
+  endpoint:
+    health:
+      show-details: always
+      show-components: always

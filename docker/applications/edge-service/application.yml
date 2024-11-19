@@ -42,3 +42,22 @@ kakao:
 
 jwt:
   secretKey: polarMoviechartJwtSecretPolarMoviechartJwtSecret
+
+management:
+  endpoints:
+    web:
+      exposure:
+        #        include: configprops, env, gateway, health, heapdump, info, loggers, mappings, prometheus
+        include: gateway, health, prometheus
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
+      group:
+        readiness:
+          include: readinessState
+  metrics:
+    tags:
+      application: ${spring.application.name}
