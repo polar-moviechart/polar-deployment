@@ -83,7 +83,7 @@ services:
     volumes:
       - polar-data:/var/lib/mysql
 
-  rabbitmq:
+  polar-rabbitmq:
     image: rabbitmq:3-management
     container_name: polar-rabbitmq
     ports:
