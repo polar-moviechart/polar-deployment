@@ -94,8 +94,6 @@ services:
       RABBITMQ_DEFAULT_PASS: password
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
-    networks:
-      - rabbitmq_network
 
 # Observability #
   grafana:
@@ -114,6 +112,7 @@ services:
       - ./observability/grafana/datasources:/etc/grafana/provisioning/datasources
       - ./observability/grafana/dashboards:/etc/grafana/provisioning/dashboards
       - ./observability/grafana/grafana.ini:/etc/grafana/grafana.ini
+      - grafana_data:/var/lib/grafana  # 영구적인 데이터 저장을 위한 볼륨 추가
 
   prometheus:
     image: prom/prometheus:v2.38.0
@@ -151,9 +150,7 @@ services:
     volumes:
       - ./observability/tempo/tempo.yml:/etc/tempo-config.yml
 
-networks:
-  rabbitmq_network:
-    driver: bridge
 volumes:
   polar-data:
   rabbitmq_data:
+  grafana_data:
