@@ -5,4 +5,9 @@
 * 애플리케이션 내리기
   * docker stop edge-service movie-service user-service
 * mysql 빼고 모두 종료
-  * docker ps -q --filter "name!=polar-mysql" | xargs docker stop
+  * docker ps -q | grep -v $(docker ps -q --filter "name=polar-mysql") | xargs -r docker stop
+
+* 도커 명령어
+  * 컨테이너 접근
+    * docker exec -it user-service /bin/bash
+
