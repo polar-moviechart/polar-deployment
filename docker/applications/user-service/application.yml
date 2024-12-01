@@ -15,6 +15,19 @@ spring:
   flyway:
     enabled: true
 #      baseline-on-migrate: true
+  rabbitmq:
+    host: polar-rabbitmq
+    port: 5672
+    username: admin
+    password: password
+
+rabbitmq:
+  queue:
+    name: user-service
+  exchange:
+    name: polar-exchange
+  routing:
+    key: key
 
 springdoc:
   package-to-scan: com.polar_moviechart.userservice.domain.controller
@@ -25,6 +38,9 @@ springdoc:
     disable-swagger-default-url: true
     display-request-duration: true
     operations-sorter: alpha
+
+movie-service:
+  url: http://movie-service/internal/api/v1/movies/
 
 server:
   port: 8082

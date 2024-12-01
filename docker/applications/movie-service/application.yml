@@ -16,6 +16,15 @@ spring:
   flyway:
     enabled: true
 #    baseline-on-migrate: true
+  rabbitmq:
+    host: polar-rabbitmq
+    port: 5672
+    username: admin
+    password: password
+
+rabbitmq:
+  queue:
+    name: user-service
 
 springdoc:
   package-to-scan: com.polar_moviechart.movieservice.domain.controller
