@@ -10,4 +10,6 @@
 * 도커 명령어
   * 컨테이너 접근
     * docker exec -it user-service /bin/bash
+  * 이미지 생성 - Dockerfile이 있는 디렉토리에서 실행
+    * docker build -t movie-service:latest .
 

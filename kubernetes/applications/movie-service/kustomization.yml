@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- github.com/polar-moviechart/movie-service/k8s?ref=c4b2b8c1964ecf21c93c2ac1817e37594f102030
+- github.com/polar-moviechart/movie-service/k8s?ref=2cf2ed36683c2b68b8cf448c06f67779daefee88
 
 configMapGenerator:
 - behavior: merge

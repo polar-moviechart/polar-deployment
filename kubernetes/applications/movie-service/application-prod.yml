@@ -17,7 +17,7 @@ spring:
     enabled: true
   #    baseline-on-migrate: true
   rabbitmq:
-    host: host.docker.internal
+    host: polar-rabbitmq
     port: 5672
     username: admin
     password: password
