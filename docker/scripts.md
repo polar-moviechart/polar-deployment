@@ -13,3 +13,8 @@
   * 이미지 생성 - Dockerfile이 있는 디렉토리에서 실행
     * docker build -t movie-service:latest .
 
+* 깃허브에서 도커 레지스트리에 접근하기 위해 토큰 등록
+  * kubectl create secret docker-registry regcred \
+    --docker-server=ghcr.io \
+    --docker-username=stk346 \
+    --docker-password=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
