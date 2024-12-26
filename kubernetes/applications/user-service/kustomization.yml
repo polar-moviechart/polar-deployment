@@ -15,7 +15,7 @@ configMapGenerator:
 images:
 - name: user-service
   newName: ghcr.io/polar-moviechart/user-service
-  newTag: 2cf2ed36683c2b68b8cf448c06f67779daefee88
+  newTag: bfd0cd98fd16fa300bac82aa1b3a404bea26650d
 
 replicas:
 - count: 1
