@@ -15,7 +15,7 @@ configMapGenerator:
 images:
 - name: edge-service
   newName: ghcr.io/polar-moviechart/edge-service
-  newTag: bde4511f53edf815981603dae6ee26a49a55db85
+  newTag: f48b613a6c00639d19672a6d33c6936c4ae64ab1
 - name: movie-service
   newName: ghcr.io/polar-moviechart/movie-service
   newTag: 2cf2ed36683c2b68b8cf448c06f67779daefee88
