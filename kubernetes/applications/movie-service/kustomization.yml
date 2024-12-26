@@ -5,21 +5,21 @@ kind: Kustomization
 #  - deployment.yml
 #  - service.yml
 resources:
-  - github.com/polar-moviechart/movie-service/k8s?ref=c4b2b8c1964ecf21c93c2ac1817e37594f102030
+- github.com/polar-moviechart/movie-service/k8s?ref=c4b2b8c1964ecf21c93c2ac1817e37594f102030
 
 configMapGenerator:
-  - behavior: merge
-    files:
-      - application-prod.yml
-    name: movie-config
-    namespace: polar
+- behavior: merge
+  files:
+  - application-prod.yml
+  name: movie-config
+  namespace: polar
 
 # kustomize edit set image 명령어에 의해 변경됨
 images:
-  - name: movie-service
-    newName: ghcr.io/polar-moviechart/movie-service
-    newTag: 88aee9e4741ac7b2fbdd85d8f2df9b0f3456865e
+- name: movie-service
+  newName: ghcr.io/polar-moviechart/movie-service
+  newTag: 2cf2ed36683c2b68b8cf448c06f67779daefee88
 
 replicas:
-  - name: movie-service
-    count: 1
+- count: 1
+  name: movie-service
