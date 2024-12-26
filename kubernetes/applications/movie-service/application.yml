@@ -1,4 +1,6 @@
 spring:
+  active:
+    profiles: prod
   application:
     name: movie-service
   datasource:

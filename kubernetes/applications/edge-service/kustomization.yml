@@ -5,11 +5,17 @@ resources:
 - github.com/polar-moviechart/edge-service/k8s?ref=f48b613a6c00639d19672a6d33c6936c4ae64ab1
 
 configMapGenerator:
-- behavior: create
-  files:
-  - application-prod.yml
-  name: edge-config
-  namespace: polar
+  - name: edge-config
+    behavior: merge
+    files:
+      - application.yml
+    options:
+      labels:
+        app: edge-service
+
+patchesStrategicMerge:
+  - patch-regcred.yml
+  - patch-env.yml
 
 # kustomize edit set image 명령어에 의해 변경됨
 images:
