@@ -5,7 +5,7 @@ resources:
 - github.com/polar-moviechart/edge-service/k8s?ref=f48b613a6c00639d19672a6d33c6936c4ae64ab1
 
 configMapGenerator:
-- behavior: merge
+- behavior: create
   files:
   - application-prod.yml
   name: edge-config

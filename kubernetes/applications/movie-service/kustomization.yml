@@ -5,7 +5,7 @@ resources:
 - github.com/polar-moviechart/movie-service/k8s?ref=6d4857f500cf3a3d36fcd6257c6c5c9188b2c9db
 
 configMapGenerator:
-- behavior: merge
+- behavior: create
   files:
   - application-prod.yml
   name: movie-config

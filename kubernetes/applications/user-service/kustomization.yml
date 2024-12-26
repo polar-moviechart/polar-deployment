@@ -5,7 +5,7 @@ resources:
 - github.com/polar-moviechart/user-service/k8s?ref=cf02b4936b4fbd77e44cd882621fae8d46017e4e
 
 configMapGenerator:
-- behavior: merge
+- behavior: create
   files:
   - application-prod.yml
   name: user-config
