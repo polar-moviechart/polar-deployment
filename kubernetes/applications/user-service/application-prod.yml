@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: user-service
+  datasource:
+    username: user
+    password: password
+    url: jdbc:mysql://host.docker.internal:3306/polardb_user
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true  # SQL 쿼리 출력
+    properties:
+      hibernate:
+        format_sql: true  # SQL 쿼리 포맷팅
+        default_batch_fetch_size: 100
+  flyway:
+    enabled: true
+  #      baseline-on-migrate: true
+  rabbitmq:
+    host: host.docker.internal
+    port: 5672
+    username : admin
+    password: password
+
+app:
+  rabbitmq:
+    exchange:
+      main: main_exchange     # 메인 교환기 이름
+      dlq: dlq_exchange       # DLQ 교환기 이름
+    queues:
+      movie-like: queue.movie.like        # 영화 좋아요 큐
+      movie-rating: queue.movie.rating    # 영화 평점 큐
+      dlq: queue.dlq                           # Dead Letter Queue
+    routing-keys:
+      movie-like: movie.like            # 영화 좋아요 라우팅 키
+      movie-rating: movie.rating        # 영화 평점 라우팅 키
+      dlq: dlq.key                            # Dead Letter Queue 라우팅 키
+
+springdoc:
+  package-to-scan: com.polar_moviechart.userservice.domain.controller
+  default-consumes-media-type: application/json;charset-UTF-8
+  default-produces-media-type: application/json;charset-UTF-8
+  swagger-ui:
+    path: /swagger
+    disable-swagger-default-url: true
+    display-request-duration: true
+    operations-sorter: alpha
+
+movie-service:
+  url: http://movie-service:8081/internal/api/v1/movies/
+
+server:
+  port: 8082
+
+kakao:
+  client:
+    id: 3c46ac9fcd53813acad0147afe8d5a31
+
+jwt:
+  secetKey: polarMoviechartJwtSecretPolarMoviechartJwtSecret
+  accessTokenValidityInMilliseconds: 3600000 # 1시간
+  refreshTokenValidityInMilliseconds: 604800000 # 7일
