@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: movie-service
+  datasource:
+    username: user
+    password: password
+    url: jdbc:mysql://host.docker.internal:3306/polardb_movie
+  jpa:
+    defer-datasource-initialization: false # JPA의 EntityManagerFactory가 생성되기 전에 flyway 먼저 초기화
+    hibernate:
+      ddl-auto: none
+    show-sql: true  # SQL 쿼리 출력
+    properties:
+      hibernate:
+        format_sql: true  # SQL 쿼리 포맷팅
+  flyway:
+    enabled: true
+  #    baseline-on-migrate: true
+  rabbitmq:
+    host: host.docker.internal
+    port: 5672
+    username: admin
+    password: password
+
+app:
+  rabbitmq:
+    exchange:
+      main: main_exchange     # 메인 교환기 이름
+      dlq: dlq_exchange       # DLQ 교환기 이름
+    queues:
+      movie-like: queue.movie.like        # 영화 좋아요 큐
+      movie-rating: queue.movie.rating    # 영화 평점 큐
+      dlq: queue.dlq                           # Dead Letter Queue
+    routing-keys:
+      movie-like: movie.like            # 영화 좋아요 라우팅 키
+      movie-rating: movie.rating        # 영화 평점 라우팅 키
+      dlq: dlq.key                            # Dead Letter Queue 라우팅 키
+
+springdoc:
+  package-to-scan: com.polar_moviechart.movieservice.domain.controller
+  default-consumes-media-type: application/json;charset-UTF-8
+  default-produces-media-type: application/json;charset-UTF-8
+  swagger-ui:
+    path: /swagger
+    disable-swagger-default-url: true
+    display-request-duration: true
+    operations-sorter: alpha
+
+user-service:
+  url: http://user-service:8082/internal/api/v1/users/
+
+server:
+  port: 8081
