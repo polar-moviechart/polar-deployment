@@ -13,6 +13,9 @@ configMapGenerator:
 
 # kustomize edit set image 명령어에 의해 변경됨
 images:
+- name: edge-service
+  newName: ghcr.io/polar-moviechart/edge-service
+  newTag: bde4511f53edf815981603dae6ee26a49a55db85
 - name: movie-service
   newName: ghcr.io/polar-moviechart/movie-service
   newTag: 2cf2ed36683c2b68b8cf448c06f67779daefee88
