@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: polar-mysql
+spec:
+  selector:
+    app: polar-mysql
+  ports:
+    - port: 3306
+      targetPort: 3306
+  clusterIP: None

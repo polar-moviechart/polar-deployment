@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: polar-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: polar-mysql
+  template:
+    metadata:
+      labels:
+        app: polar-mysql
+    spec:
+      containers:
+        - name: polar-mysql
+          image: mysql:8.0
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "102030"
+            - name: MYSQL_USRE
+              value: "user"
+            - name: MYSQL_PASSWORD
+              value: "polar-chart"
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: polar-mysql-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: polar-mysql-storage
+          polar-mysql-volume:
+            claimName: polar-mysql-pvc
