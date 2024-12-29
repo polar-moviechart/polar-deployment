@@ -29,5 +29,5 @@ spec:
               mountPath: /var/lib/mysql
       volumes:
         - name: polar-mysql-storage
-          polar-mysql-volume:
+          persistentVolumeClaim:
             claimName: polar-mysql-pvc
