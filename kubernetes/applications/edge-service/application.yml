@@ -6,28 +6,28 @@ spring:
     gateway:
       routes:
         - id: user-service-public
-          uri: http://user-service:8082
+          uri: http://user-service:80
           predicates:
             - Path=/public/api/v1/users/**
           filters:
             - JwtAuthFilterOptional
 
         - id: user-service-secure
-          uri: http://user-service:8082
+          uri: http://user-service:80
           predicates:
             - Path=/secure/api/v1/users/**
           filters:
             - JwtAuthFilter
 
         - id: movie-service-public
-          uri: http://movie-service:8081
+          uri: http://movie-service:80
           predicates:
             - Path=/public/api/v1/movies/**
           filters:
             - JwtAuthFilterOptional
 
         - id: movie-service-secure
-          uri: http://movie-service:8081
+          uri: http://movie-service:80
           predicates:
             - Path=/secure/api/v1/movies/**
           filters:

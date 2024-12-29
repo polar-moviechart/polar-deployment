@@ -47,7 +47,7 @@ springdoc:
     operations-sorter: alpha
 
 movie-service:
-  url: http://movie-service:8081/internal/api/v1/movies/
+  url: http://movie-service:80/internal/api/v1/movies/
 
 server:
   port: 8082
