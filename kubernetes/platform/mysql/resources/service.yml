@@ -6,6 +6,8 @@ spec:
   selector:
     app: polar-mysql
   ports:
-    - port: 3306
+    - protocol: TCP
+      port: 3306
       targetPort: 3306
-  clusterIP: None
+      nodePort: 30006 # 외부에서 접근할 수 있는 포트
+  type: NodePort
