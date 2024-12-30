@@ -18,7 +18,7 @@ spec:
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: "102030"
-            - name: MYSQL_USRE
+            - name: MYSQL_USER
               value: "user"
             - name: MYSQL_PASSWORD
               value: "polar-chart"
