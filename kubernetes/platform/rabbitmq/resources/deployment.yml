@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: polar-rabbitmq
+  namespace: rabbitmq-system
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: polar-rabbitmq
+  template:
+    metadata:
+      labels:
+        app: polar-rabbitmq
+    spec:
+      containers:
+        - name: rabbitmq
+          image: rabbitmq:3.13.2-management
+          ports:
+            - containerPort: 4369
+            - containerPort: 5672
+            - containerPort: 15672
+          volumeMounts:
+            - name: rabbitmq-data
+              mountPath: /var/lib/rabbitmq
+          env:
+            - name: RABBITMQ_ERLANG_COOKIE
+              valueFrom:
+                secretKeyRef:
+                  name: polar-rabbitmq-erlang-cookie
+                  key: erlang-cookie
+            - name: RABBITMQ_NODENAME
+              value: "rabbit@$(POD_NAME).rabbitmq-system.svc.cluster.local"
+            - name: RABBITMQ_USE_LONGNAME
+              value: "true"
+      volumes:
+        - name: rabbitmq-data
+          persistentVolumeClaim:
+            claimName: polar-rabbitmq-pvc
