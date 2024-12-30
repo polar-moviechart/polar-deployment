@@ -5,4 +5,4 @@ metadata:
   namespace: rabbitmq-system
 type: Opaque
 data:
-  erlang-cookie: bXktZXJsYW5nLWNvb2tpZS12YWx1ZQ== # "my-erlang-cookie-value"를 base64로 인코딩한 값
+  erlang-cookie: bXktZXJsYW5nLWNvb2tpZS12YWx1ZQ==  # "my-erlang-cookie-value"의 Base64 인코딩 값

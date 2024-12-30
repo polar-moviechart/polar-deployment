@@ -20,15 +20,19 @@ spec:
             - containerPort: 4369
             - containerPort: 5672
             - containerPort: 15672
-            - name:
           volumeMounts:
             - name: rabbitmq-data
               mountPath: /var/lib/rabbitmq
           env:
             - name: RABBITMQ_ERLANG_COOKIE
-              value: "my-erlang-cookie-value"
+              valueFrom:
+                secretKeyRef:
+                  name: polar-rabbitmq-erlang-cookie
+                  key: erlang-cookie
             - name: RABBITMQ_NODENAME
-              value: "rabbit@$(POD_NAME).rabbitmq-system.svc.cluster.local"
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
             - name: RABBITMQ_USE_LONGNAME
               value: "true"
       volumes:

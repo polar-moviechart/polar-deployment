@@ -5,4 +5,4 @@ resources:
   - polar-rabbitmq-pv.yml
   - polar-rabbitmq-pvc.yml
   - service.yml
-  - polar-rabbitmq-secrets.yml
+  - erlang-cookie.yml
