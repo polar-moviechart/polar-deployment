@@ -22,6 +22,10 @@ spec:
               value: "user"
             - name: MYSQL_PASSWORD
               value: "polar-chart"
+            - name: MYSQL_ROOT_HOST
+              value: "%"
+            - name: MYSQL_CLUSTER_NAME
+              value: "polar-mysql"  # 클러스터 이름
           ports:
             - containerPort: 3306
           volumeMounts:
