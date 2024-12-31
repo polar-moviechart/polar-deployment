@@ -6,7 +6,7 @@ resources:
 
 configMapGenerator:
 - name: movie-config
-  behavior: create
+  behavior: merge
   files:
   - application-prod.yml
   options:
