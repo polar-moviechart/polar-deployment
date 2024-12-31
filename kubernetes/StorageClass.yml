@@ -9,3 +9,4 @@ parameters:
   zones: us-east-1a,us-east-1b  # 선택할 가용 영역 설정
 reclaimPolicy: Retain  # PV가 삭제되더라도 볼륨은 삭제되지 않음
 volumeBindingMode: WaitForFirstConsumer  # PVC가 실제로 필요할 때 EBS 볼륨 프로비저닝
+allowVolumeExpansion: true
