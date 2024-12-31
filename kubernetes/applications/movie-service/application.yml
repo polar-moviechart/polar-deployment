@@ -10,7 +10,7 @@ spring:
   jpa:
     defer-datasource-initialization: false # JPA의 EntityManagerFactory가 생성되기 전에 flyway 먼저 초기화
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     show-sql: true  # SQL 쿼리 출력
     properties:
       hibernate:
