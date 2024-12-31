@@ -4,7 +4,7 @@ spring:
   datasource:
     username: user
     password: password
-    url: jdbc:mysql://host.docker.internal:3306/polardb_user
+    url: jdbc:mysql://13.125.45.144:30006/polardb_user
   jpa:
     hibernate:
       ddl-auto: none
