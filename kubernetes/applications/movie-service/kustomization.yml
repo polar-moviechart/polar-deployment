@@ -21,7 +21,7 @@ patchesStrategicMerge:
 images:
 - name: movie-service
   newName: ghcr.io/polar-moviechart/movie-service
-  newTag: 6d4857f500cf3a3d36fcd6257c6c5c9188b2c9db
+  newTag: 3942bcfedbfe03907a5716591e4a81818520e0fe
 
 replicas:
 - count: 1
