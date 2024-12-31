@@ -17,7 +17,8 @@ spring:
         format_sql: true  # SQL 쿼리 포맷팅
   flyway:
     enabled: true
-      baseline-on-migrate: true
+    baseline-on-migrate: true
+    beseline-version: 1
   rabbitmq:
     host: polar-rabbitmq
     port: 5672
