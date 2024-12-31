@@ -5,7 +5,7 @@ resources:
 - deployment.yml
 
 configMapGenerator:
-- behavior: replace
+- behavior: create
   files:
   - application-prod.yml
   name: movie-config
