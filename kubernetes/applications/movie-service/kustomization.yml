@@ -3,15 +3,7 @@ kind: Kustomization
 
 resources:
 - deployment.yml
-
-configMapGenerator:
-- behavior: merge
-  files:
-  - application-prod.yml
-  name: movie-config
-  options:
-    labels:
-      app: movie-service
+- movie-config.yml
 
 patches:
 - path: patch-regcred.yml
