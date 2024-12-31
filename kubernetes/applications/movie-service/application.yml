@@ -18,7 +18,7 @@ spring:
   flyway:
     enabled: true
     baseline-on-migrate: true
-    beseline-version: 1
+    baseline-version: 1
   rabbitmq:
     host: polar-rabbitmq
     port: 5672
