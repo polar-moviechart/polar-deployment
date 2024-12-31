@@ -2,13 +2,13 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- github.com/polar-moviechart/user-service/k8s?ref=cf02b4936b4fbd77e44cd882621fae8d46017e4e
+  - deployment.yml
 
 configMapGenerator:
   - name: user-config
-    behavior: merge
+    behavior: create
     files:
-      - application.yml
+      - application-prod.yml
     options:
       labels:
         app: user-service

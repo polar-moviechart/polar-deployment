@@ -4,7 +4,7 @@ spring:
   datasource:
     username: root
     password: 102030
-    url: jdbc:mysql://13.125.45.144:30006/polardb_user
+    url: jdbc:mysql://polar-mysql:3306/polardb_movie
   jpa:
     hibernate:
       ddl-auto: create
@@ -15,12 +15,13 @@ spring:
         default_batch_fetch_size: 100
   flyway:
     enabled: true
-  #      baseline-on-migrate: true
+    baseline-on-migrate: true
+    baseline-version: 1
   rabbitmq:
     host: polar-rabbitmq
     port: 5672
-    username : admin
-    password: password
+    username: "root"
+    password: "polar-chart"
 
 app:
   rabbitmq:

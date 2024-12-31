@@ -1,24 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: movie-service
+  name: user-service
   labels:
-    app: movie-service
+    app: user-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: movie-service
+      app: user-service
   template:
     metadata:
       labels:
-        app: movie-service
+        app: user-service
     spec:
-      imagePullSecrets:
-        - name: regcred
       containers:
-        - name: movie-service
-          image: movie-service
+        - name: user-service
+          image: user-service
           imagePullPolicy: IfNotPresent
           lifecycle:
             preStop:
@@ -30,7 +28,7 @@ spec:
             - name: SPRING_ACTIVE_PROFILES
               value: "prod"
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:mysql://polar-mysql:30006/polardb_movie
+              value: jdbc:mysql://polar-mysql:3306/polardb_user
             - name: SPRING_DATASOURCE_USER
               value: "root"
             - name: SPRING_DATASOURCE_PASSWORD
@@ -44,10 +42,9 @@ spec:
             - name: SPRING_RABBITMQ_PASSWORD
               value: "polar-chart"
           volumeMounts:
-            - name: movie-config-volume
+            - name: user-config-volume
               mountPath: /workspace/config
       volumes:
-        - name: movie-config-volume
+        - name: user-config-volume
           configMap:
-            name: movie-config
-
+            name: user-config
