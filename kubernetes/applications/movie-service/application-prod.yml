@@ -20,10 +20,10 @@ spring:
     baseline-on-migrate: true
     baseline-version: 1
   rabbitmq:
-    host: polar-rabbitmq
+    host: polar-rabbitmq.rabbitmq-system.svc.cluster.local
     port: 5672
-    username: admin
-    password: password
+    username: "root"
+    password: "polar-chart"
 
 app:
   rabbitmq:
