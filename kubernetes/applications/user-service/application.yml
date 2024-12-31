@@ -2,8 +2,8 @@ spring:
   application:
     name: user-service
   datasource:
-    username: user
-    password: password
+    username: root
+    password: 102030
     url: jdbc:mysql://13.125.45.144:30006/polardb_user
   jpa:
     hibernate:
