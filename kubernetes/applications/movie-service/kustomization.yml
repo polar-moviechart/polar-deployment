@@ -6,13 +6,12 @@ resources:
 
 configMapGenerator:
 - name: movie-config
-  behavior: create
+  behavior: merge
   files:
   - application.yml
   options:
     labels:
       app: movie-service
-    namePrefix: "movie-config-"
 
 patches:
   - patch-regcred.yml
