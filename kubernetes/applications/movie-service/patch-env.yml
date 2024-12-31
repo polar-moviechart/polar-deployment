@@ -7,8 +7,8 @@ spec:
     spec:
       containers:
         - name: movie-service
-#          command: ["sleep"]
-#          args: ["infinity"]
+          command: ["sleep"]
+          args: ["infinity"]
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: prod
