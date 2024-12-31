@@ -1,0 +1,11 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: standard  # 기존 이름을 유지
+provisioner: kubernetes.io/aws-ebs  # AWS EBS 프로비저너 사용
+parameters:
+  type: gp2  # 일반 SSD (기본값)
+  fsType: ext4  # ext4 파일 시스템 사용
+  zones: us-east-1a,us-east-1b  # 선택할 가용 영역 설정
+reclaimPolicy: Retain  # PV가 삭제되더라도 볼륨은 삭제되지 않음
+volumeBindingMode: WaitForFirstConsumer  # PVC가 실제로 필요할 때 EBS 볼륨 프로비저닝
