@@ -35,6 +35,10 @@ spec:
                   fieldPath: metadata.name
             - name: RABBITMQ_USE_LONGNAME
               value: "true"
+            - name: RABBITMQ_DEFAULT_USER
+              value: "root"  # RabbitMQ 기본 사용자명
+            - name: RABBITMQ_DEFAULT_PASS
+              value: "polar-chart"  # RabbitMQ 기본 비밀번호
       volumes:
         - name: rabbitmq-data
           persistentVolumeClaim:
