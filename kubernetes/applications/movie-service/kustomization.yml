@@ -14,8 +14,8 @@ configMapGenerator:
       app: movie-service
 
 patches:
-  - patch-regcred.yml
-  - patch-env.yml
+  - path: patch-regcred.yml
+  - path: patch-env.yml
 
   # kustomize edit set image 명령어에 의해 변경됨
 images:
