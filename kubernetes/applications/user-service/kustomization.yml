@@ -2,26 +2,26 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - deployment.yml
+- deployment.yml
 
 configMapGenerator:
-  - name: user-config
-    behavior: create
-    files:
-      - application-prod.yml
-    options:
-      labels:
-        app: user-service
+- behavior: create
+  files:
+  - application-prod.yml
+  name: user-config
+  options:
+    labels:
+      app: user-service
 
 patches:
-  - path: patch-regcred.yml
-  - path: patch-env.yml
+- path: patch-regcred.yml
+- path: patch-env.yml
 
 # kustomize edit set image 명령어에 의해 변경됨
 images:
 - name: user-service
   newName: ghcr.io/polar-moviechart/user-service
-  newTag: cf02b4936b4fbd77e44cd882621fae8d46017e4e
+  newTag: b4f21502eefdb221ffa3da2d8d1b4c90906bdcdd
 
 replicas:
 - count: 1
