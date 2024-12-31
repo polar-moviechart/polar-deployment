@@ -12,8 +12,9 @@ configMapGenerator:
   options:
     labels:
       app: movie-service
+    namePrefix: "movie-config-"
 
-patchesStrategicMerge:
+patches:
   - patch-regcred.yml
   - patch-env.yml
 
