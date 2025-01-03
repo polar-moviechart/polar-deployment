@@ -6,7 +6,8 @@ spring:
   datasource:
     username: root
     password: 102030
-    url: jdbc:mysql://polar-mysql:3306/polardb_movie
+#    url: jdbc:mysql://polar-mysql:3306/polardb_movie
+    url: jdbc:mysql://13.209.251.5:30006/polardb_movie
   jpa:
     defer-datasource-initialization: false # JPA의 EntityManagerFactory가 생성되기 전에 flyway 먼저 초기화
     hibernate:

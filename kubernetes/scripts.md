@@ -1,12 +1,29 @@
+13.209.251.5:30006
+* 깃허브 도커 레지스트리에서 이미지 가져와 애플리케이션 배포
+  * 깃허브 Personal AccessToken 발급
+    * 깃허브 Settings → Developer settings → Personal access tokens → Tokens (classic)에서
+    * 토큰 생성 후 write:packages, read:packages, delete:packages 권한을 선택
+    * 생성된 토큰 저장
+      * polar-moviechart-docker-registry: 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
+  * 쿠버네티스 클러스터에서 도커 레지스트리 접근 권한 설정
+    * kubectl create secret docker-registry regcred \
+      --docker-server=ghcr.io \
+      --docker-username=stk346 \
+      --docker-password=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
+    * deployment.yml 매니페스트에 이미지, 시크릿 관련 코드 작성
+    * 
+
+---
+
 * 마스터노드 토큰
-  * sudo kubeadm join 172.26.11.60:6443 --token x4r3tb.xgdvcaqz9jrl0xrb \
-    --discovery-token-ca-cert-hash sha256:354c85e825e4e6adef6da5dc1815d6b840de1248f096ac0e8001786e20303406
+  * sudo kubeadm join 172.26.11.60:6443 --token zmod54.5yalvxil68mwz2xs --discovery-token-ca-cert-hash sha256:354c85e825e4e6adef6da5dc1815d6b840de1248f096ac0e8001786e20303406
+
 
 * 라이트세일 콘솔 연결 (ssh 파일이 있는 경로에서 실행)
   * 마스터
-    * ssh -i ./polar-moviechart-masternode.pem ubuntu@43.201.112.234
+    * ssh -i ./polar-moviechart-masternode.pem ubuntu@43.201.175.124
   * 워커
-    * ssh -i ./polar-moviechart-workernode1.pem ubuntu@13.125.45.144
+    * ssh -i ./polar-moviechart-workernode1.pem ubuntu@13.209.251.5
   * ssh 파일에 권한부여
     * chmod 600 ./polar-moviechart-workernode1.pem
 
@@ -103,3 +120,6 @@
       * 마스터노드 추가 설정
           * pod 네트워크 설치
               * kubectl apply -f https://docs.projectcalico.org/v3.25/manifests/calico.yaml
+
+  Warning  FailedScheduling  2m46s  default-scheduler  0/2 nodes are available: persistentvolumeclaim "polar-rabbitmq-pvc" not found.
+* preemption: 0/2 nodes are available: 2 Preemption is not helpful for scheduling.
