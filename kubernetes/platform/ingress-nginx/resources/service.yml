@@ -6,6 +6,8 @@ metadata:
   name: ingress-nginx-controller
   namespace: ingress-nginx-controller
 spec:
+  selector:
+    app: ingress-nginx-controller
   type: NodePort
   ports:
     - name: http
