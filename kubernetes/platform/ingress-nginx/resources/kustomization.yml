@@ -5,7 +5,7 @@ resources:
 #  - https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/do/deploy.yaml
   - deployment.yml
   - configmap.yml
+  - service.yml
 
 patches:
   - path: patch-config.yml
-  - path: service.yml
