@@ -27,12 +27,12 @@ spec:
           env:
             - name: SPRING_ACTIVE_PROFILES
               value: "prod"
-            - name: SPRING_DATASOURCE_URL
-              value: jdbc:mysql://polar-mysql:3306/polardb_user
-            - name: SPRING_DATASOURCE_USER
-              value: "root"
-            - name: SPRING_DATASOURCE_PASSWORD
-              value: "102030"
+#            - name: SPRING_DATASOURCE_URL
+#              value: jdbc:mysql://polar-mysql:3306/polardb_user
+#            - name: SPRING_DATASOURCE_USER
+#              value: "root"
+#            - name: SPRING_DATASOURCE_PASSWORD
+#              value: "102030"
             - name: SPRING_RABBITMQ_HOST
               value: polar-rabbitmq
             - name: SPRING_RABBITMQ_PORT
