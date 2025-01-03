@@ -6,6 +6,8 @@ resources:
   - deployment.yml
   - configmap.yml
   - service.yml
+  - cluster-role.yml           # 추가된 부분
+  - cluster-role-binding.yml    # 추가된 부분
 
 patches:
   - path: patch-config.yml
