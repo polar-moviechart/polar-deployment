@@ -6,7 +6,7 @@ metadata:
   name: ingress-nginx-controller-role
 rules:
   - apiGroups: [""]
-    resources: ["pods"]
+    resources: ["pods", "configmaps"]
     verbs: ["get", "list", "watch"]
   - apiGroups: ["networking.k8s.io"]
     resources: ["ingressclasses"]
