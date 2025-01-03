@@ -11,3 +11,4 @@ resources:
 
 patches:
   - path: patch-config.yml
+  - path: service.yml
