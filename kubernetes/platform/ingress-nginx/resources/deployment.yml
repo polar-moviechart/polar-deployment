@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ingress-nginx-controller
+  namespace: ingress-nginx-controller
   labels:
     app: ingress-nginx
 spec:
@@ -32,15 +33,15 @@ spec:
 #            - name: ingress-nginx-ssl
 #              mountPath: /etc/ssl/certs
 #              readOnly: true
-#          env:
-#            - name: POD_NAME
-#              valueFrom:
-#                fieldRef:
-#                  fieldPath: metadata.name
-#            - name: POD_NAMESPACE
-#              valueFrom:
-#                fieldRef:
-#                  fieldPath: metadata.namespace
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
 #      volumes:
 #        - name: ingress-nginx-config
 #          configMap:

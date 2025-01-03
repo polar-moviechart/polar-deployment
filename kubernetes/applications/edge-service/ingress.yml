@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: polar-ingress
+  namespace: ingress-nginx-controller
 spec:
   ingressClassName: nginx
   rules:
@@ -15,3 +16,4 @@ spec:
                 name: edge-service
                 port:
                   number: 80
+                namespace: default
