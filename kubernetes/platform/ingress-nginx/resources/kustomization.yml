@@ -2,12 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-#  - https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/do/deploy.yaml
-  - deployment.yml
-  - configmap.yml
+  - https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/do/deploy.yaml
+#  - deployment.yml
+#  - configmap.yml
   - service.yml
-  - cluster-role.yml           # 추가된 부분
-  - cluster-role-binding.yml    # 추가된 부분
+#  - cluster-role.yml           # 추가된 부분
+#  - cluster-role-binding.yml    # 추가된 부분
 
 patches:
   - path: patch-config.yml
