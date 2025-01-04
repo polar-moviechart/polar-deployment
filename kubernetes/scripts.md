@@ -1,4 +1,23 @@
-13.209.251.5:30006
+* 워커노드 퍼블릭ip
+  * 13.209.251.5
+* 인그레스 노드포트
+  * 31506
+* 아르고cd
+  * 관리자 콘솔
+    * 13.209.251.5:32252
+  * 아이디 비밀번호
+    * admin
+    * Hwd3HaADnsaMIwYa
+* 깃허브 리파지토리 접근 시크릿
+  * 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
+
+
+argocd repo add https://github.com/polar-moviechart/polar-deployment.git \                              
+--username stk346 \          
+--password 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
+
+
+
 * 깃허브 도커 레지스트리에서 이미지 가져와 애플리케이션 배포
   * 깃허브 Personal AccessToken 발급
     * 깃허브 Settings → Developer settings → Personal access tokens → Tokens (classic)에서
@@ -11,7 +30,6 @@
       --docker-username=stk346 \
       --docker-password=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
     * deployment.yml 매니페스트에 이미지, 시크릿 관련 코드 작성
-    * 
 
 ---
 
@@ -121,5 +139,3 @@
           * pod 네트워크 설치
               * kubectl apply -f https://docs.projectcalico.org/v3.25/manifests/calico.yaml
 
-  Warning  FailedScheduling  2m46s  default-scheduler  0/2 nodes are available: persistentvolumeclaim "polar-rabbitmq-pvc" not found.
-* preemption: 0/2 nodes are available: 2 Preemption is not helpful for scheduling.
