@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: polar-ingress
   namespace: default
-#  annotations:
+  annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
