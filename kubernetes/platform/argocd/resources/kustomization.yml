@@ -5,3 +5,6 @@ namespace: argocd
 resources:
   - namespace.yml
   - https://raw.githubusercontent.com/argoproj/argo-cd/v2.11.3/manifests/install.yaml
+  - edge-service-application.yml
+  - movie-service-application.yml
+  - user-service-application.yml

@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: movie-service
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/polar-moviechart/polar-deployment.git
+    targetRevision: main
+    path: kubernetes/applications/movie-service
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: movie-service
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
