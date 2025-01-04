@@ -7,3 +7,5 @@ resources:
   - namespace.yml
   - https://raw.githubusercontent.com/argoproj/argo-cd/v2.11.3/manifests/install.yaml
 
+patches:
+  - path: patch-service.yml
