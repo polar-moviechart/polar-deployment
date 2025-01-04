@@ -4,11 +4,11 @@ kind: Kustomization
 resources:
   - https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.4/deploy/static/provider/cloud/deploy.yaml
 #  - deployment.yml
-  - configmap.yml
+#  - configmap.yml
 #  - service.yml
 #  - cluster-role.yml           # 추가된 부분
 #  - cluster-role-binding.yml    # 추가된 부분
 
-patches:
-  - path: patch-config.yml
-  - path: service.yml
+#patches:
+#  - path: patch-config.yml
+#  - path: service.yml
