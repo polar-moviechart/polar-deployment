@@ -11,7 +11,7 @@ spec:
     path: kubernetes/applications/edge-service
   destination:
     server: https://kubernetes.default.svc
-    namespace: edge-service
+    namespace: default
   syncPolicy:
     automated:
       prune: true

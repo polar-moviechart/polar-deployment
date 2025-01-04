@@ -11,7 +11,7 @@ spec:
     path: kubernetes/applications/user-service
   destination:
     server: https://kubernetes.default.svc
-    namespace: user-service
+    namespace: default
   syncPolicy:
     automated:
       prune: true

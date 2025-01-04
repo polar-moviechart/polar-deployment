@@ -11,7 +11,7 @@ spec:
     path: kubernetes/applications/movie-service
   destination:
     server: https://kubernetes.default.svc
-    namespace: movie-service
+    namespace: default
   syncPolicy:
     automated:
       prune: true
