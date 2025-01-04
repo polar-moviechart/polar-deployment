@@ -14,7 +14,7 @@ spec:
     - host: 24b7f79204fd665bc811ebc9a90c7fd4-41875236.ap-northeast-2.elb.amazonaws.com
     - http:
         paths:
-          - path: /
+          - path: /public
             pathType: Prefix
             backend:
               service:
