@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: api.polar-moviechart
+    - host: api.polar-moviechart.com
       http:
         paths:
           - path: /
@@ -23,5 +23,5 @@ spec:
                   number: 80
   tls:
   - hosts:
-    - api.polar-moviechart
+    - api.polar-moviechart.com
     secretName: tls-secret
