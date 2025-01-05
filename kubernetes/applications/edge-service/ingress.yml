@@ -4,15 +4,15 @@ metadata:
   name: polar-ingress
   namespace: default
   annotations:
-#    nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
+    cert-manager.io/cluster-issuer: "letsencrypt-production" # kubectl get clusterIssuer -> NAME
 spec:
   ingressClassName: nginx
   rules:
-#    - host: 24b7f79204fd665bc811ebc9a90c7fd4-41875236.ap-northeast-2.elb.amazonaws.com
-    - http:
+    - host: polar-moviechart
+      http:
         paths:
           - path: /
             pathType: Prefix
@@ -21,3 +21,7 @@ spec:
                 name: edge-service
                 port:
                   number: 80
+  tls:
+  - hosts:
+    - polar-moviechart
+    secretName: tls-secret
