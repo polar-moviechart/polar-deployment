@@ -12,7 +12,7 @@ spec:
   ingressClassName: nginx
   rules:
 #    - host: api.polar-moviechart.com
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
