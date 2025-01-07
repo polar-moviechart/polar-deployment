@@ -4,11 +4,17 @@ metadata:
   name: letsencrypt-production
 spec:
   acme:
+    # ACME 서버 URL
     server: https://acme-v02.api.letsencrypt.org/directory
     email: stk346@gmail.com
     privateKeySecretRef:
-      name: letsencrypt-production
+      name: letsencrypt-prod-key
     solvers:
-      - http01:
-          ingress:
-            class: nginx
+      - dns01:
+          # DNS 솔버는 사용하는 DNS 서비스에 맞춰 설정해야 합니다
+          route53:
+            accessKeyID: YOUR_AWS_ACCESS_KEY_ID
+            secretAccessKeySecretRef:
+              name: route53-credentials
+              key: secret-access-key
+            region: us-east-1

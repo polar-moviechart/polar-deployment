@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
-    cert-manager.io/cluster-issuer: "letsencrypt-production" # kubectl get clusterIssuer -> NAME
+    cert-manager.io/cluster-issuer: "letsencrypt-prod" # kubectl get clusterIssuer -> NAME
 spec:
   ingressClassName: nginx
   rules:
@@ -21,7 +21,7 @@ spec:
                 name: edge-service
                 port:
                   number: 80
-#  tls:
-#  - hosts:
-#    - api.polar-moviechart.com
-#    secretName: tls-secret
+  tls:
+  - hosts:
+    - api.polar-moviechart.com
+    secretName: api-tls
