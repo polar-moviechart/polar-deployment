@@ -13,8 +13,8 @@ spec:
       - dns01:
           # DNS 솔버는 사용하는 DNS 서비스에 맞춰 설정해야 합니다
           route53:
-            accessKeyID: YOUR_AWS_ACCESS_KEY_ID
+            accessKeyID: AKIAUTWUSHR3UVOJU7FD
             secretAccessKeySecretRef:
-              name: route53-credentials
-              key: secret-access-key
+              name: api-cert
+              key: iC2tkqOo7kCLIZo+mrvkhxv9STkBLeNU/sQPUzle
             region: us-east-1
