@@ -20,7 +20,7 @@ spec:
               service:
                 name: edge-service
                 port:
-                  number: 31506
+                  number: 80
   tls:
   - hosts:
     - api.polar-moviechart.com
