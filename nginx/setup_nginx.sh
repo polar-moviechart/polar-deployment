@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 설정할 YAML 파일 경로
-CONFIG_FILE="nginx-config.yaml"
+CONFIG_FILE="nginx-config.yml"
 
 # Nginx 사이트 설정 디렉토리
 SITES_AVAILABLE_DIR="/etc/nginx/sites-available"
