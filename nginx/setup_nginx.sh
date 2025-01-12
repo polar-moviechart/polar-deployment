@@ -20,6 +20,12 @@ fi
 echo "설정 파일을 $SITES_AVAILABLE_DIR로 복사 중..."
 sudo cp "$CONFIG_FILE" "$CONFIG_DEST"
 
+# 심볼릭 링크가 이미 존재하면 삭제 후 다시 생성
+if [ -f "$SITES_ENABLED_DIR/api.polar-moviechart.com" ] || [ -L "$SITES_ENABLED_DIR/api.polar-moviechart.com" ]; then
+    echo "기존 링크 또는 파일 삭제 중..."
+    sudo rm "$SITES_ENABLED_DIR/api.polar-moviechart.com"
+fi
+
 # 심볼릭 링크 생성
 echo "심볼릭 링크를 $SITES_ENABLED_DIR로 생성 중..."
 sudo ln -s "$CONFIG_DEST" "$SITES_ENABLED_DIR/api.polar-moviechart.com"
@@ -28,9 +34,13 @@ sudo ln -s "$CONFIG_DEST" "$SITES_ENABLED_DIR/api.polar-moviechart.com"
 echo "Nginx 설정 파일 테스트 중..."
 sudo nginx -t
 
-# default server 블록 비활성화
-echo "default server 블록 비활성화 중..."
-sudo rm /etc/nginx/sites-enabled/default
+# default 서버 블록이 존재하면 삭제
+if [ -f /etc/nginx/sites-enabled/default ]; then
+    echo "default 서버 블록을 비활성화 중..."
+    sudo rm /etc/nginx/sites-enabled/default
+else
+    echo "default 서버 블록이 존재하지 않음"
+fi
 
 # Nginx 재시작
 echo "Nginx를 재시작 중..."
