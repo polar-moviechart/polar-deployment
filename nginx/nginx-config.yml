@@ -7,10 +7,15 @@
 
   # Certbot을 위한 인증서 검증 경로 (리디렉션 제외)
     location ~ /.well-known/acme-challenge/ {
-    allow all;
-    root /var/www/html;  # Certbot이 인증서를 발급받을 수 있도록 설정
+        allow all;
+        root /var/www/html;  # Certbot이 인증서를 발급받을 수 있도록 설정
+        
+        # 이미 HTTPS로 전달된 요청에 대해 다시 리다이렉션하지 않도록 설정
+        if ($http_x_forwarded_proto = "https") {
+            return 200;
+        }
     }
-
+  # HTTPS로 리다이렉션
     return 301 https://$host$request_uri;  # 올바른 리다이렉트 설정
 }
 
