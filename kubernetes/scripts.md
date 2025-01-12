@@ -11,12 +11,24 @@
 * 깃허브 리파지토리 접근 시크릿
   * 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
 
-
 argocd repo add https://github.com/polar-moviechart/polar-deployment.git \                              
 --username stk346 \          
 --password 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
 
-
+---
+### https 설정 관련
+* https 적용
+  * cert-manager 설치
+    * https://github.com/cert-manager/cert-manager/releases/download/v1.13.0/cert-manager.yaml
+  * 어떤 인증 기관에다 인증서 생성을 요청할지 정의하는 매니페스트 작성
+  * cert 관련 IAM 정보
+    * 이름
+      * api-cert
+    * 엑세스 키
+      * AKIAUTWUSHR3UVOJU7FD
+    * 시크릿 키
+      * iC2tkqOo7kCLIZo+mrvkhxv9STkBLeNU/sQPUzle
+---
 
 * 깃허브 도커 레지스트리에서 이미지 가져와 애플리케이션 배포
   * 깃허브 Personal AccessToken 발급
