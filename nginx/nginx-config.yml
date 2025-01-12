@@ -8,15 +8,10 @@
     allow all;
     root /var/www/html;  # Certbot이 인증서를 발급받을 수 있도록 설정
     }
-
-  # HTTP -> HTTPS 리디렉션
-    location / {
-    return 301 https://$host$request_uri;
-    }
 }
 
-  # HTTPS 서버 (443 포트)
-    server {
+# HTTPS 서버 (443 포트)
+server {
     listen 443 ssl;
     server_name api.polar-moviechart.com;
 
