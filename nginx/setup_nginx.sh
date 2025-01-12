@@ -28,6 +28,10 @@ sudo ln -s "$CONFIG_DEST" "$SITES_ENABLED_DIR/api.polar-moviechart.com"
 echo "Nginx 설정 파일 테스트 중..."
 sudo nginx -t
 
+# default server 블록 비활성화
+echo "default server 블록 비활성화 중..."
+sudo rm /etc/nginx/sites-enabled/default
+
 # Nginx 재시작
 echo "Nginx를 재시작 중..."
 sudo systemctl restart nginx
