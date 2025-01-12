@@ -1,25 +1,25 @@
 # HTTP 서버 (80 포트)
-  server {
-    listen 80;
-    server_name api.polar-moviechart.com;
-
-    client_max_body_size 100M;  # 허용 크기
-
-  # Certbot을 위한 인증서 검증 경로 (리디렉션 제외)
-    location ~ /.well-known/acme-challenge/ {
-        allow all;
-        root /var/www/html;  # Certbot이 인증서를 발급받을 수 있도록 설정
-
-        if ($http_x_forwarded_proto = "https") {
-            return 200;
-        }
-    }
-
-#     클라우드플레어가 HTTPS로 전달한 요청을 다시 HTTP로 리다이렉트하지 않도록
-    if ($http_x_forwarded_proto != "https") {
-        return 301 https://$host$request_uri;
-    }
-}
+#  server {
+#    listen 80;
+#    server_name api.polar-moviechart.com;
+#
+#    client_max_body_size 100M;  # 허용 크기
+#
+#  # Certbot을 위한 인증서 검증 경로 (리디렉션 제외)
+#    location ~ /.well-known/acme-challenge/ {
+#        allow all;
+#        root /var/www/html;  # Certbot이 인증서를 발급받을 수 있도록 설정
+#
+#        if ($http_x_forwarded_proto = "https") {
+#            return 200;
+#        }
+#    }
+#
+##     클라우드플레어가 HTTPS로 전달한 요청을 다시 HTTP로 리다이렉트하지 않도록
+#    if ($http_x_forwarded_proto != "https") {
+#        return 301 https://$host$request_uri;
+#    }
+#}
 
 # HTTPS 서버 (443 포트)
 server {
