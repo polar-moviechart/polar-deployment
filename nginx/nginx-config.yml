@@ -16,9 +16,9 @@
     }
 
 #     클라우드플레어가 HTTPS로 전달한 요청을 다시 HTTP로 리다이렉트하지 않도록
-#    if ($http_x_forwarded_proto != "https") {
-#        return 301 https://$host$request_uri;
-#    }
+    if ($http_x_forwarded_proto != "https") {
+        return 301 https://$host$request_uri;
+    }
 }
 
 # HTTPS 서버 (443 포트)
