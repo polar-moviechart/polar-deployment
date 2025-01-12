@@ -10,9 +10,9 @@
         allow all;
         root /var/www/html;  # Certbot이 인증서를 발급받을 수 있도록 설정
 
-#        if ($http_x_forwarded_proto = "https") {
-#            return 200;
-#        }
+        if ($http_x_forwarded_proto = "https") {
+            return 200;
+        }
     }
 
 #     클라우드플레어가 HTTPS로 전달한 요청을 다시 HTTP로 리다이렉트하지 않도록
