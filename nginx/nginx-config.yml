@@ -1,12 +1,16 @@
   server {
-    listen 80; # HTTP 기본 포트
-    server_name api.polar-moviechart.com;
-#    server_name 13.209.251.5;
+  listen 80; # HTTP 기본 포트
+  server_name api.polar-moviechart.com;
+#  server_name 13.209.251.5;
   
-    # HTTP -> HTTPS 리다이렉션
-    return 301 https://$host$request_uri;
-
-
+  # HTTP -> HTTPS 리다이렉션
+  return 301 https://$host$request_uri;
+    
+  # Certbot을 위한 설정
+  location ~ /.well-known/acme-challenge/ {
+  allow all;
+  root /var/www/html;
+  }
 }
 
 server {
