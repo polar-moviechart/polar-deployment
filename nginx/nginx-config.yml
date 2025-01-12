@@ -1,18 +1,31 @@
   server {
     listen 80; # HTTP 기본 포트
     server_name api.polar-moviechart.com;
-    server_name 13.209.251.5;
+#    server_name 13.209.251.5;
   
-    client_max_body_size 20M; # 허용 크기를 20MB로 설정
+    # HTTP -> HTTPS 리다이렉션
+    return 301 https://$host$request_uri;
 
-    location / {
-    proxy_pass http://localhost:31506; # NodePort로 트래픽 전달
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    }
 
-    error_log /var/log/nginx/api-error.log; # 에러 로그 파일 경로
-    access_log /var/log/nginx/api-access.log; # 접근 로그 파일 경로
+}
+
+server {
+  listen 443 ssl;
+  server_name api.polar-moviechart.com;
+  
+  ssl_certificate /etc/letsencrypt/live/api.polar-moviechart.com/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/api.polar-moviechart.com/privkey.pem;
+  
+  client_max_body_size 20M; # 허용 크기를 20MB로 설정
+  
+  location / {
+  proxy_pass http://localhost:31506;
+  proxy_set_header Host $host;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header X-Forwarded-Proto $scheme;
   }
+  
+  error_log /var/log/nginx/api-error.log;
+  access_log /var/log/nginx/api-access.log;
+}
