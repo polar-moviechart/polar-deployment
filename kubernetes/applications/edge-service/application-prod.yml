@@ -34,7 +34,8 @@ spring:
             - JwtAuthFilter
 
 cors:
-  origins: https://polar-moviechart.com, https://kauth.kakao.com
+  origins: https://polar-moviechart.com
+  allow: https://kauth.kakao.com
 edge:
   service:
     url: https://api.polar-moviechart.com
