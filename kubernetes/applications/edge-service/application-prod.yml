@@ -37,7 +37,7 @@ cors:
   origins: https://polar-moviechart.com, https://kauth.kakao.com
 edge:
   service:
-    url: https://polar-moviechart.com
+    url: https://api.polar-moviechart.com
 
 management:
   endpoints:
