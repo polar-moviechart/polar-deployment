@@ -23,7 +23,7 @@ patches:
 images:
 - name: edge-service
   newName: ghcr.io/polar-moviechart/edge-service
-  newTag: 8a8c09720ad3634fb18b1b67eca45c4cbd6a7ed1
+  newTag: 3dec08c9ea26e529c4c1f465b04ea31f8a26e220
 
 replicas:
 - count: 1
