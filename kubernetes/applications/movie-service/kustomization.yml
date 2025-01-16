@@ -22,7 +22,7 @@ patches:
 images:
 - name: movie-service
   newName: ghcr.io/polar-moviechart/movie-service
-  newTag: 11bf4bb8e03ecd840798c2a7bf26f6996ec4267f
+  newTag: f898e0dc82567b55787abf0295fb9d9596d142f6
 
 replicas:
 - count: 1
