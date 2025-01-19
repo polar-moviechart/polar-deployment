@@ -53,3 +53,13 @@ user-service:
 
 server:
   port: 8081
+
+cloud:
+  aws:
+    s3:
+      bucket: polar-s3
+    stack.auto: false
+    region.static: ap-northeast-2
+    credentials:
+      accessKey: AKIAUTWUSHR36HNRTVH4
+      secretKey: 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
