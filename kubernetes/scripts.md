@@ -1,3 +1,8 @@
+* 쿠버네티스 대시보드
+  * 토큰 생성
+    * kubectl -n kubernetes-dashboard create token admin-user
+  * 
+
 * 워커노드 퍼블릭ip
   * 13.209.251.5
 * 인그레스 노드포트

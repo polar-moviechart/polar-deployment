@@ -20,3 +20,11 @@ spec:
                 name: edge-service
                 port:
                   number: 80
+                    # Kubernetes Dashboard 경로 추가
+          - path: /dashboard
+            pathType: Prefix
+            backend:
+              service:
+                name: kubernetes-dashboard
+                port:
+                  number: 443
