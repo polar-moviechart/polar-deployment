@@ -1,13 +1,6 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: kubernetes-dashboard
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard
   namespace: kubernetes-dashboard
 spec:
@@ -20,26 +13,20 @@ spec:
       labels:
         k8s-app: kubernetes-dashboard
     spec:
+      serviceAccountName: kubernetes-dashboard
       containers:
         - name: kubernetes-dashboard
           image: kubernetesui/dashboard:v2.7.0
           ports:
             - containerPort: 8443
-              protocol: TCP
-          args:
-            - "--auto-generate-certificates"
           volumeMounts:
-            - mountPath: /certs
-              name: kubernetes-dashboard-certs
-          securityContext:
-            allowPrivilegeEscalation: false
+            - name: csrf-token-volume
+              mountPath: /etc/csrf-token
+              readOnly: true
       volumes:
-        - name: kubernetes-dashboard-certs
-          emptyDir: {}
-      serviceAccountName: kubernetes-dashboard
-      nodeSelector:
-        "kubernetes.io/os": linux
-      tolerations:
-        - key: "node-role.kubernetes.io/master"
-          operator: Exists
-          effect: NoSchedule
+        - name: csrf-token-volume
+          secret:
+            secretName: kubernetes-dashboard-csrf
+            items:
+              - key: csrf-token
+                path: csrf-token
