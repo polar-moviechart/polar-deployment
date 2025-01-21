@@ -1,4 +1,4 @@
 resources:
-  - deployment.yaml
-  - service.yaml
-  - admin-user.yaml
+  - deployment.yml
+  - service.yml
+  - admin-user.yml
