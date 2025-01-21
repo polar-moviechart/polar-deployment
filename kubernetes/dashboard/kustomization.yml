@@ -3,3 +3,4 @@ resources:
   - service.yml
   - admin-user.yml
   - serviceaccount.yml
+  - cluster-role-binding.yml
