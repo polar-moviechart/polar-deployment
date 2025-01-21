@@ -5,3 +5,4 @@ resources:
   - serviceaccount.yml
   - cluster-role-binding.yml
   - csrf-secret.yml
+  - namespace.yml
